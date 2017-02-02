@@ -326,9 +326,6 @@ if (isset($_POST['subscribe']) && is_email($_POST['email']) && $listsok && $allt
 
     $blacklisted = isBlackListed($email);
 
-	$redirect_page = $_POST['redirect'];
-	header("Location: " . $redirect_page);
-	
     print '<title>' . $GLOBALS['strSubscribeTitle'] . '</title>';
     print $subscribepagedata['header'];
 
@@ -352,10 +349,6 @@ if (isset($_POST['subscribe']) && is_email($_POST['email']) && $listsok && $allt
         $sendrequest = 1;
     }
 
-		
-
-	
-	
     # personalise the thank you page
     if ($subscribepagedata['thankyoupage']) {
         $thankyoupage = $subscribepagedata['thankyoupage'];

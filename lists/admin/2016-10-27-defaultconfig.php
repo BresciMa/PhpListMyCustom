@@ -93,7 +93,7 @@ $default_config = array(
         'description' => s('How often do you want to check for a new version of phplist (days)'),
         'type' => 'integer',
         'min' => 1,
-        'max' => 9999999,
+        'max' => 180,
         'category' => 'security',
     ),
 

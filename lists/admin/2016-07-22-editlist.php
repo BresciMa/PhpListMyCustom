@@ -70,28 +70,17 @@ if (!empty($_POST['addnewlist']) && !empty($_POST['listname'])) {
 
     if ($id) {
         $query = sprintf('update %s set name="%s",description="%s",category="%s",
-    		active=%d,
-        	listorder=%d,
-        	prefix = "%s", 
-        	owner = %d, 
-        	thankyoupage="%s"
-			where id=%d', 
-        		$GLOBALS['tables']['list'], sql_escape($_POST['listname']),
+    active=%d,listorder=%d,prefix = "%s", owner = %d
+    where id=%d', $GLOBALS['tables']['list'], sql_escape($_POST['listname']),
             sql_escape($_POST['description']), sql_escape($_POST['category']), $_POST['active'], $_POST['listorder'],
-            $_POST['prefix'], $_POST['owner'], $_POST['thankyoupage'], $id);
+            $_POST['prefix'], $_POST['owner'], $id);
     } else {
         $query = sprintf('insert into %s
-      		(name,description,entered,listorder,owner,prefix,active,category, thankyoupage) values
-        		("%s","%s",now(),%d,%d,"%s",%d,"%s", "%s")',
-            		$GLOBALS['tables']['list'], 
-        			sql_escape($_POST['listname']), 
-        			sql_escape($_POST['description']),
-        			$_POST['listorder'], 
-        			$_POST['owner'], 
-        			sql_escape($_POST['prefix']), 
-        			$_POST['active'],
-            		sql_escape($category), 
-        			$_POST['thankyoupage']);
+      (name,description,entered,listorder,owner,prefix,active,category)
+      values("%s","%s",now(),%d,%d,"%s",%d,"%s")',
+            $GLOBALS['tables']['list'], sql_escape($_POST['listname']), sql_escape($_POST['description']),
+            $_POST['listorder'], $_POST['owner'], sql_escape($_POST['prefix']), $_POST['active'],
+            sql_escape($category));
     }
 #  print $query;
     $result = Sql_Query($query);
@@ -128,7 +117,6 @@ if (!empty($id)) {
 //    'rssfeed' => '',  //Obsolete by rssmanager plugin
         'active' => 0,
         'listorder' => 0,
-    	'thankyoupage' =>'',
         'description' => '',
     );
 }
@@ -196,12 +184,6 @@ foreach ($GLOBALS['plugins'] as $plugin) {
 }
 
 ?>
-
-<label for="thankyoupage">Thank You Page</label>
-<div class="field"><input type="text" name="thankyoupage"
-                          value="<?php echo htmlspecialchars(stripslashes($list['thankyoupage'])) ?>"/></div>
-
-
 <label for="description"><?php echo $GLOBALS['I18N']->get('List Description'); ?></label>
 <div class="field"><textarea name="description" cols="35" rows="5">
 <?php echo htmlspecialchars(stripslashes($list['description'])) ?></textarea></div>

@@ -948,10 +948,7 @@ while ($message = Sql_fetch_array($messages)) {
         set_time_limit(120);
 
         $secondsTogo = $finishSendingBefore - time();
-        //$stopSending = $secondsTogo < 0;
-		//MARCELOJ BRESCIAI - se o processo de envio ficar fora do ar, ele para de disparar mensagens.
-		$stopSending = false;
-		
+        $stopSending = $secondsTogo < 0;
 
         # check if we have been "killed"
         #   processQueueOutput('Process ID '.$send_process_id);

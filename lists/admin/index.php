@@ -12,7 +12,6 @@ if (isset($_REQUEST['_SERVER'])) {
 }
 $cline = array();
 $GLOBALS['commandline'] = 0;
-
 require_once dirname(__FILE__) . '/inc/unregister_globals.php';
 require_once dirname(__FILE__) . '/inc/magic_quotes.php';
 
@@ -84,7 +83,6 @@ $GLOBALS['pagestats'] = array();
 $GLOBALS['pagestats']['time_start'] = $now['sec'] * 1000000 + $now['usec'];
 $GLOBALS['pagestats']['number_of_queries'] = 0;
 
-
 # load all required files
 require_once dirname(__FILE__) . '/init.php';
 require_once dirname(__FILE__) . '/' . $GLOBALS['database_module'];
@@ -92,9 +90,8 @@ include_once dirname(__FILE__) . '/../texts/english.inc';
 include_once dirname(__FILE__) . '/../texts/' . $GLOBALS['language_module'];
 include_once dirname(__FILE__) . '/languages.php';
 require_once dirname(__FILE__) . '/defaultconfig.php';
+
 require_once dirname(__FILE__) . '/connect.php';
-
-
 include_once dirname(__FILE__) . '/lib.php';
 require_once dirname(__FILE__) . '/inc/netlib.php';
 require_once dirname(__FILE__) . '/inc/interfacelib.php';

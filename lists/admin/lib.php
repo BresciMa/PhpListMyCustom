@@ -1,16 +1,18 @@
 <?php
 
-
-
+echo "aaa1";
 
 require_once dirname(__FILE__) . '/accesscheck.php';
 # library used for plugging into the webbler, instead of "connect"
 # depricated and should be removed
 
+echo "aaa2---";
+
 include_once dirname(__FILE__) . '/class.phplistmailer.php';
 
 
-echo "não chegou.... 2";
+echo "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+
 
 $domain = getConfig('domain');
 $website = getConfig('website');
@@ -26,8 +28,6 @@ if (!$GLOBALS['message_envelope']) {
 if (defined('IN_WEBBLER') && is_object($GLOBALS['config']['plugins']['phplist'])) {
     $GLOBALS['tables'] = $GLOBALS['config']['plugins']['phplist']->tables;
 }
-
-
 
 /* this should probably move to init.php */
 $GLOBALS['bounceruleactions'] = array(

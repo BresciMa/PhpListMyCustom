@@ -1,18 +1,17 @@
 <?php
-error_reporting( E_ALL );
-
 require_once dirname(__FILE__) . '/accesscheck.php';
 
 if (defined('PHPMAILER_PATH') and PHPMAILER_PATH != '') {
     #require_once '/usr/share/php/libphp-phpmailer/class.phpmailer.php'
     require_once PHPMAILER_PATH;
+	
 } else {
     //https://github.com/PHPMailer/PHPMailer
     require_once dirname(__FILE__) . '/PHPMailer/PHPMailerAutoload.php';
-	//require_once('../../phpmailer/PHPMailerAutoload.php');	
 }
 
-class PHPlistMailer extends PHPMailer{
+class PHPlistMailer extends PHPMailer
+{
     public $WordWrap = 75;
     public $encoding = 'base64';
     public $messageid = 0;

@@ -691,8 +691,6 @@ function confirmPage($id)
     if ($userdata['id']) {
         $html = '<ul>';
         $lists = '';
-        $thankyoupage = '';
-        
         $currently = Sql_Fetch_Assoc_Query("select confirmed from {$tables['user']} where id = " . $userdata['id']);
         $blacklisted = isBlackListed($userdata['email']);
         foreach ($GLOBALS['plugins'] as $pluginname => $plugin) {
@@ -700,20 +698,16 @@ function confirmPage($id)
         }
         Sql_Query("update {$tables['user']} set confirmed = 1,blacklisted = 0, optedin = 1 where id = " . $userdata['id']);
         $subscriptions = array();
-        $req = Sql_Query(sprintf('select list.id,name,description, thankyoupage from %s list, %s listuser where listuser.userid = %d and listuser.listid = list.id and list.active',
+        $req = Sql_Query(sprintf('select list.id,name,description from %s list, %s listuser where listuser.userid = %d and listuser.listid = list.id and list.active',
             $tables['list'], $tables['listuser'], $userdata['id']));
         if (!Sql_Affected_Rows()) {
             $lists = "\n * " . $GLOBALS['strNoLists'];
             $html .= '<li>' . $GLOBALS['strNoLists'] . '</li>';
         }
         while ($row = Sql_fetch_array($req)) {
-            
-        	array_push($subscriptions, $row['id']);
+            array_push($subscriptions, $row['id']);
             $lists .= "\n *" . stripslashes($row['name']);
             $html .= '<li class="list">' . stripslashes($row['name']) . '<div class="listdescription">' . stripslashes($row['description']) . '</div></li>';
-            
-            $thankyoupage = $row['thankyoupage'];
-            
         }
         $html .= '</ul>';
         if ($blacklisted) {
@@ -753,15 +747,8 @@ function confirmPage($id)
         $info = $GLOBALS['strConfirmFailInfo'];
     }
 
-
-	if ($thankyoupage <> ""){
-		header("Location: " . $thankyoupage);
-	}
-    
-    
     $res = '<title>' . $GLOBALS['strConfirmTitle'] . '</title>';
     $res .= $GLOBALS['pagedata']['header'];
-    
     $res .= '<h3>' . $info . '</h3>';
     $res .= $html;
     $res .= '<p>' . $GLOBALS['PoweredBy'] . '</p>';
