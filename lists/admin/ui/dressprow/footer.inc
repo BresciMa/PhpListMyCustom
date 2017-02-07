@@ -14,7 +14,7 @@
             <?php print $languageswitcher; ?>
         </div>
 	<div class="clear"></div>
-<?php include dirname(__FILE__).'/rssfeed.php'; ?>  
+<?php #include dirname(__FILE__).'/rssfeed.php'; ?>  
 	</div><!-- end #right-bar -->
 	
 	<div class="clear"></div>

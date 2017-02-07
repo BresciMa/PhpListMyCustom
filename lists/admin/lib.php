@@ -1,18 +1,10 @@
 <?php
 
-echo "aaa1";
-
 require_once dirname(__FILE__) . '/accesscheck.php';
 # library used for plugging into the webbler, instead of "connect"
 # depricated and should be removed
 
-echo "aaa2---";
-
 include_once dirname(__FILE__) . '/class.phplistmailer.php';
-
-
-echo "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-
 
 $domain = getConfig('domain');
 $website = getConfig('website');

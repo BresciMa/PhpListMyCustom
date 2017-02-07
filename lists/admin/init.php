@@ -22,8 +22,6 @@ $GLOBALS['pagestats']['number_of_queries'] = 0;
 // taken from Joomla, prepare for PHP5.6 and up
 // see https://github.com/phpList/phplist3/pull/3
 if (function_exists('iconv') || ((!strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' && dl('iconv.so')))) {
-    
-	echo PHP_VERSION;
 	
 	if (version_compare(PHP_VERSION, '5.6', '>=')) {
         @ini_set('default_charset', 'UTF-8');

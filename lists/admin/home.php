@@ -30,10 +30,10 @@ if (Sql_Table_exists($tables['config'], 1)) {
 refreshTlds();
 
 # check for latest version
-$checkinterval = sprintf('%d', getConfig('check_new_version'));
-if (!isset($checkinterval)) {
-    $checkinterval = 7;
-}
+#$checkinterval = sprintf('%d', getConfig('check_new_version'));
+#if (!isset($checkinterval)) {
+#    $checkinterval = 7;
+#}
 
 $showUpdateAvail = !empty($_GET['showupdate']); ## just to check the design
 $thisversion = VERSION;
@@ -65,16 +65,16 @@ if (!$showUpdateAvail && $checkinterval) {
     }
 }
 
-if ($showUpdateAvail) {
-    print '<div class="newversion note">';
-    print $GLOBALS['I18N']->get('A new version of phpList is available!');
-    print '<br/>';
-    print '<br/>' . $GLOBALS['I18N']->get('The new version may have fixed security issues,<br/>so it is recommended to upgrade as soon as possible');
-    print '<br/>' . $GLOBALS['I18N']->get('Your version') . ': <b>' . $thisversion . '</b>';
-    print '<br/>' . $GLOBALS['I18N']->get('Latest version') . ': <b>' . $latestversion . '</b><br/>  ';
-    print '<a href="https://www.phplist.com/latestchanges?utm_source=pl' . $thisversion . '&amp;utm_medium=updatenews&amp;utm_campaign=phpList" title="' . s('Read what has changed in the new version') . '" target="_blank">' . $GLOBALS['I18N']->get('View what has changed') . '</a>&nbsp;&nbsp;';
-    print '<a href="https://www.phplist.com/download?utm_source=pl' . $thisversion . '&amp;utm_medium=updatedownload&amp;utm_campaign=phpList" title="' . s('Download the new version') . '" target="_blank">' . $GLOBALS['I18N']->get('Download') . '</a></div>';
-}
+#if ($showUpdateAvail) {
+#    print '<div class="newversion note">';
+#    print $GLOBALS['I18N']->get('A new version of phpList is available!');
+#    print '<br/>';
+#    print '<br/>' . $GLOBALS['I18N']->get('The new version may have fixed security issues,<br/>so it is recommended to upgrade as soon as possible');
+#    print '<br/>' . $GLOBALS['I18N']->get('Your version') . ': <b>' . $thisversion . '</b>';
+#    print '<br/>' . $GLOBALS['I18N']->get('Latest version') . ': <b>' . $latestversion . '</b><br/>  ';
+#    print '<a href="https://www.phplist.com/latestchanges?utm_source=pl' . $thisversion . '&amp;utm_medium=updatenews&amp;utm_campaign=phpList" title="' . s('Read what has changed in the new version') . '" target="_blank">' . $GLOBALS['I18N']->get('View what has changed') . '</a>&nbsp;&nbsp;';
+#    print '<a href="https://www.phplist.com/download?utm_source=pl' . $thisversion . '&amp;utm_medium=updatedownload&amp;utm_campaign=phpList" title="' . s('Download the new version') . '" target="_blank">' . $GLOBALS['I18N']->get('Download') . '</a></div>';
+#}
 
 print '<div class="accordion">';
 

@@ -14,13 +14,7 @@ define('SEND_ONE_TESTMAIL', 1);
 define('CLICKTRACK', 1);
 
 define ("TEST",0);
-
 define('PHPMAILERHOST', '');
-#define('PHPMAILERHOST','smtp.sendgrid.net');
-#define('PHPMAILERPORT',465);
-#define("PHPMAILER_SECURE",'ssl');
-#$phpmailer_smtpuser = 'apikey';
-#$phpmailer_smtppassword = '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';
 
 $message_envelope = 'ola@grupombmidia.com.br';
 

@@ -800,7 +800,15 @@ class PHPlistMailer extends PHPMailer
 
     public function MailSend($header, $body)
     {
-        $this->mailsize = strlen($header . $body);
+		//SENDGRID PLUGINS
+		global $plugins;
+
+        if (phplistPlugin::isEnabled('SendGridPlugin')) {
+			return $plugins['SendGridPlugin']->send($this);
+        }
+		
+		
+		$this->mailsize = strlen($header . $body);
 
         ## use Amazon, if set up, @@TODO redo with latest PHPMailer
         ## https://github.com/PHPMailer/PHPMailer/commit/57b183bf6a203cb69231bc3a235a00905feff75b
