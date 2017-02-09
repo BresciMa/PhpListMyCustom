@@ -1,0 +1,1 @@
+<?php$con=mysqli_connect($__db_host,$__db_user,$__db_pass,$__db_database);if (!$con) {    die('Contacte o Administrador do Sistema <br>' . mysqli_error());}mysqli_select_db($con, 'local_phplist');?>
